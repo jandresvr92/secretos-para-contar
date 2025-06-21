@@ -34,24 +34,79 @@ const PORT = process.env.PORT || 3001;
 // Initialize database
 await initializeDatabase();
 
+// CORS Configuration - MUST BE FIRST
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'http://127.0.0.1:5173',
+      'http://127.0.0.1:3000',
+      process.env.FRONTEND_URL
+    ].filter(Boolean);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'Authorization',
+    'Cache-Control',
+    'Pragma'
+  ],
+  exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
+  maxAge: 86400, // 24 hours
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+};
+
+// Apply CORS before any other middleware
+app.use(cors(corsOptions));
+
+// Handle preflight requests explicitly
+app.options('*', cors(corsOptions));
+
 // Rate limiting
 const limiter = rateLimit({
   windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 15 * 60 * 1000, // 15 minutes
   max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 100, // limit each IP to 100 requests per windowMs
   message: {
     error: 'Demasiadas solicitudes desde esta IP, intenta de nuevo más tarde.'
-  }
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
-// Middleware
-app.use(helmet());
+// Security middleware
+app.use(helmet({
+  crossOriginEmbedderPolicy: false,
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'"],
+      imgSrc: ["'self'", "data:", "https:"],
+    },
+  },
+}));
+
 app.use(compression());
 app.use(limiter);
 app.use(morgan('combined'));
-app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-  credentials: true
-}));
+
+// Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
@@ -64,7 +119,8 @@ app.get('/health', (req, res) => {
     status: 'OK',
     message: 'SPC Backend API está funcionando correctamente',
     timestamp: new Date().toISOString(),
-    version: '1.0.0'
+    version: '1.0.0',
+    cors: 'enabled'
   });
 });
 
@@ -81,6 +137,7 @@ app.get('/', (req, res) => {
     message: '🌟 Bienvenido a la API de Secretos Para Contar 🌟',
     description: 'Backend para la biblioteca digital educativa',
     version: '1.0.0',
+    cors: 'enabled',
     endpoints: {
       health: '/health',
       auth: '/api/auth',
@@ -104,6 +161,7 @@ app.listen(PORT, () => {
    Puerto: ${PORT}
    Entorno: ${process.env.NODE_ENV}
    URL: http://localhost:${PORT}
+   CORS: Habilitado para ${process.env.FRONTEND_URL || 'http://localhost:5173'}
 🚀 ===================================
   `);
 });
