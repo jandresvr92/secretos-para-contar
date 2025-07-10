@@ -45,7 +45,8 @@ const corsOptions = {
       'http://localhost:3000',
       'http://127.0.0.1:5173',
       'http://127.0.0.1:3000',
-      process.env.FRONTEND_URL
+      process.env.FRONTEND_URL,
+      'https://3.148.206.15'
     ].filter(Boolean);
     
     if (allowedOrigins.includes(origin)) {
@@ -154,7 +155,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT,'0.0.0.0', () => {
   console.log(`
 🚀 ===================================
    SPC Backend API iniciado
