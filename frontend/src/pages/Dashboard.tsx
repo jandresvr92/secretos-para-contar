@@ -21,7 +21,7 @@ import { useAuthStore } from '../store/authStore';
 import { toast } from '../store/toastStore';
 
 //@ts-ignore
-const API_URL = import.meta.env.API_URL || 'http://localhost:3001';
+const VITE_API_URL = import.meta.env.VITE_VITE_API_URL || 'http://localhost:3001';
 
 
 interface Book {
@@ -98,7 +98,7 @@ export const Dashboard: React.FC = () => {
     
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_URL}/api/books?limit=100`, {
+      const response = await fetch(`${VITE_API_URL}/api/books?limit=100`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -124,7 +124,7 @@ export const Dashboard: React.FC = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/books/meta/categories`);
+      const response = await fetch(`${VITE_API_URL}/api/books/meta/categories`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -147,7 +147,7 @@ export const Dashboard: React.FC = () => {
     if (!token) return;
     
     try {
-      const response = await fetch(`${API_URL}/api/stats/admin`, {
+      const response = await fetch(`${VITE_API_URL}/api/stats/admin`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -218,7 +218,7 @@ export const Dashboard: React.FC = () => {
     if (!book) return;
 
     try {
-      const response = await fetch(`${API_URL}/api/books/${bookId}/toggle-active`, {
+      const response = await fetch(`${VITE_API_URL}/api/books/${bookId}/toggle-active`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -259,8 +259,8 @@ export const Dashboard: React.FC = () => {
 
     try {
       const url = editingBook 
-        ? `${API_URL}/api/books/${editingBook.id}`
-        : `${API_URL}/api/books`;
+        ? `${VITE_API_URL}/api/books/${editingBook.id}`
+        : `${VITE_API_URL}/api/books`;
       
       const method = editingBook ? 'PUT' : 'POST';
 

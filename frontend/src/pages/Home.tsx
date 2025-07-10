@@ -10,7 +10,7 @@ import { useAuthStore } from '../store/authStore';
 import { useBookStore } from '../store/bookStore';
 
 //@ts-ignore
-const API_URL = import.meta.env.API_URL || 'http://localhost:3001';
+const VITE_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ export const Home: React.FC = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/stats`);
+      const response = await fetch(`${VITE_API_URL}/api/stats`);
       const data = await response.json();
       if (response.ok) {
         setStats(data);
@@ -73,7 +73,7 @@ export const Home: React.FC = () => {
       await recordInteraction(book.id, 'download', token || undefined);
       // Create download link
       const link = document.createElement('a');
-      link.href = `${API_URL}${book.file_url}`;
+      link.href = `${VITE_API_URL}${book.file_url}`;
       link.download = `${book.title}.pdf`;
       document.body.appendChild(link);
       link.click();
@@ -89,7 +89,7 @@ export const Home: React.FC = () => {
 
     if (book.audio_url) {
       await recordInteraction(book.id, 'play_audio', token || undefined);
-      window.open(`${API_URL}${book.audio_url}`, '_blank');
+      window.open(`${VITE_API_URL}${book.audio_url}`, '_blank');
     }
   };
 
@@ -101,7 +101,7 @@ export const Home: React.FC = () => {
 
     if (book.video_url) {
       await recordInteraction(book.id, 'play_video', token || undefined);
-      window.open(`${API_URL}${book.video_url}`, '_blank');
+      window.open(`${VITE_API_URL}${book.video_url}`, '_blank');
     }
   };
 

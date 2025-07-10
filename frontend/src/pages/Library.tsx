@@ -10,7 +10,7 @@ import { useBookStore } from '../store/bookStore';
 import { useNavigate } from 'react-router-dom';
 
 //@ts-ignore
-const API_URL = import.meta.env.API_URL || 'http://localhost:3001';
+const VITE_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export const Library: React.FC = () => {
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ export const Library: React.FC = () => {
       await recordInteraction(book.id, 'download', token || undefined);
       // Create download link
       const link = document.createElement('a');
-      link.href = `${API_URL}${book.file_url}`;
+      link.href = `${VITE_API_URL}${book.file_url}`;
       link.download = `${book.title}.pdf`;
       document.body.appendChild(link);
       link.click();
@@ -80,7 +80,7 @@ export const Library: React.FC = () => {
 
     if (book.audio_url) {
       await recordInteraction(book.id, 'play_audio', token || undefined);
-      window.open(`${API_URL}${book.audio_url}`, '_blank');
+      window.open(`${VITE_API_URL}${book.audio_url}`, '_blank');
     }
   };
 
@@ -92,7 +92,7 @@ export const Library: React.FC = () => {
 
     if (book.video_url) {
       await recordInteraction(book.id, 'play_video', token || undefined);
-      window.open(`${API_URL}${book.video_url}`, '_blank');
+      window.open(`${VITE_API_URL}${book.video_url}`, '_blank');
     }
   };
 

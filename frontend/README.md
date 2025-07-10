@@ -127,7 +127,7 @@ El frontend se conecta al backend en `http://localhost:3001` para:
 
 ### Variables de Entorno
 ```env
-API_URL=http://localhost:3001
+VITE_API_URL=http://localhost:3001
 ```
 
 ### Construcción

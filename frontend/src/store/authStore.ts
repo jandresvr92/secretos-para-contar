@@ -22,7 +22,7 @@ interface AuthState {
 }
 
 //@ts-ignore
-const API_URL = import.meta.env.API_URL || 'http://localhost:3001';
+const VITE_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export const useAuthStore = create<AuthState>()(
   persist(
@@ -36,7 +36,7 @@ export const useAuthStore = create<AuthState>()(
         set({ isLoading: true, error: null });
         
         try {
-          const response = await fetch(`${API_URL}/api/auth/login`, {
+          const response = await fetch(`${VITE_API_URL}/api/auth/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export const useAuthStore = create<AuthState>()(
         set({ isLoading: true, error: null });
         
         try {
-          const response = await fetch(`${API_URL}/api/auth/register`, {
+          const response = await fetch(`${VITE_API_URL}/api/auth/register`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ export const useAuthStore = create<AuthState>()(
         }
 
         try {
-          const response = await fetch(`${API_URL}/api/auth/refresh`, {
+          const response = await fetch(`${VITE_API_URL}/api/auth/refresh`, {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${token}`,

@@ -45,7 +45,7 @@ interface BookState {
 }
 
 //@ts-ignore
-const API_URL = import.meta.env.API_URL || 'http://localhost:3001';
+const VITE_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export const useBookStore = create<BookState>((set, get) => ({
   books: [],
@@ -76,7 +76,7 @@ export const useBookStore = create<BookState>((set, get) => ({
       queryParams.append('limit', limit.toString());
       queryParams.append('offset', offset.toString());
 
-      const response = await fetch(`${API_URL}/api/books?${queryParams}`);
+      const response = await fetch(`${VITE_API_URL}/api/books?${queryParams}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -123,7 +123,7 @@ export const useBookStore = create<BookState>((set, get) => ({
     set({ isLoading: true, error: null });
     
     try {
-      const response = await fetch(`${API_URL}/api/books/${id}`);
+      const response = await fetch(`${VITE_API_URL}/api/books/${id}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -151,7 +151,7 @@ export const useBookStore = create<BookState>((set, get) => ({
 
   fetchCategories: async () => {
     try {
-      const response = await fetch(`${API_URL}/api/books/meta/categories`);
+      const response = await fetch(`${VITE_API_URL}/api/books/meta/categories`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -182,7 +182,7 @@ export const useBookStore = create<BookState>((set, get) => ({
         return;
       }
 
-      const response = await fetch(`${API_URL}/api/books/${bookId}/interact`, {
+      const response = await fetch(`${VITE_API_URL}/api/books/${bookId}/interact`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ interaction_type: interactionType }),

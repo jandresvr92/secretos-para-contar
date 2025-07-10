@@ -154,7 +154,7 @@ MAX_FILE_SIZE=10485760
 
 ### Frontend (.env)
 ```env
-API_URL=http://localhost:3001
+VITE_API_URL=http://localhost:3001
 ```
 
 ## 🚀 Despliegue
@@ -172,7 +172,7 @@ FRONTEND_URL=https://tu-dominio.com
 
 #### Frontend
 ```env
-API_URL=https://api.tu-dominio.com
+VITE_API_URL=https://api.tu-dominio.com
 ```
 
 ### Comandos de Producción
