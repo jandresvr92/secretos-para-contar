@@ -46,7 +46,7 @@ const corsOptions = {
       'http://127.0.0.1:5173',
       'http://127.0.0.1:3000',
       process.env.FRONTEND_URL,
-      'https://3.148.206.15'
+      'https://18.226.166.82'
     ].filter(Boolean);
     
     if (allowedOrigins.includes(origin)) {
