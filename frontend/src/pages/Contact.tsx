@@ -120,7 +120,7 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-brand-navy mb-2">Teléfono</h3>
-                    <p className="text-gray-600 mb-1">(604) 3021966</p>
+                    <p className="text-gray-600 mb-1">+57 (604) 3001010</p>
                     <p className="text-sm text-gray-500">Lunes a Viernes, 9AM - 5PM</p>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-brand-navy mb-2">Ubicación</h3>
-                    <p className="text-gray-600 mb-1">Medellin, Colombia</p>
+                    <p className="text-gray-600 mb-1">Medellín, Colombia</p>
                     <p className="text-sm text-gray-500">Oficina principal</p>
                   </div>
                 </div>
@@ -142,9 +142,9 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-brand-navy mb-2">Horarios</h3>
-                    <p className="text-gray-600 mb-1">Lunes - Viernes: 9:00 AM - 6:00 PM</p>
+                    <p className="text-gray-600 mb-1">Lunes - Viernes: 9:00 AM - 5:00 PM</p>
                     <p className="text-gray-600 mb-1">Sábados: 10:00 AM - 2:00 PM</p>
-                    <p className="text-sm text-gray-500">Zona horaria: GMT-6</p>
+                    <p className="text-sm text-gray-500">Zona horaria: GMT-5</p>
                   </div>
                 </div>
               </div>

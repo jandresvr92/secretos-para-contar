@@ -173,7 +173,7 @@ export const About: React.FC = () => {
               <div className="w-24 h-24 bg-gradient-to-br from-brand-orange to-orange-600 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-2xl font-bold text-white">MR</span>
               </div>
-              <h3 className="text-xl font-bold text-brand-navy mb-2">María Rodríguez</h3>
+              <h3 className="text-xl font-bold text-brand-navy mb-2">María Antonieta</h3>
               <p className="text-brand-orange font-medium mb-4">Directora Ejecutiva</p>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Educadora con 15 años de experiencia, apasionada por democratizar 
@@ -185,7 +185,7 @@ export const About: React.FC = () => {
               <div className="w-24 h-24 bg-gradient-to-br from-brand-navy to-navy-800 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-2xl font-bold text-white">CL</span>
               </div>
-              <h3 className="text-xl font-bold text-brand-navy mb-2">Carlos López</h3>
+              <h3 className="text-xl font-bold text-brand-navy mb-2">Jhon Legasov</h3>
               <p className="text-brand-orange font-medium mb-4">Director de Tecnología</p>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Ingeniero de software especializado en plataformas educativas 
@@ -197,7 +197,7 @@ export const About: React.FC = () => {
               <div className="w-24 h-24 bg-gradient-to-br from-brand-orange to-orange-600 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-2xl font-bold text-white">AG</span>
               </div>
-              <h3 className="text-xl font-bold text-brand-navy mb-2">Ana García</h3>
+              <h3 className="text-xl font-bold text-brand-navy mb-2">Martha Cecilia Rojas</h3>
               <p className="text-brand-orange font-medium mb-4">Coordinadora de Contenido</p>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Especialista en literatura infantil y desarrollo de contenido 

@@ -80,14 +80,14 @@ export const Footer: React.FC = () => {
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-brand-orange mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300 font-medium">+1 (555) 123-4567</p>
-                  <p className="text-gray-400 text-sm">Lunes a Viernes, 9AM - 6PM</p>
+                  <p className="text-gray-300 font-medium">+57 (604) 3001010</p>
+                  <p className="text-gray-400 text-sm">Lunes a Viernes, 9AM - 5PM</p>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-brand-orange mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300 font-medium">Ciudad de México, México</p>
+                  <p className="text-gray-300 font-medium">Medellín, Colombia</p>
                   <p className="text-gray-400 text-sm">Oficina principal</p>
                 </div>
               </li>
@@ -124,7 +124,7 @@ export const Footer: React.FC = () => {
             
             <div className="text-center md:text-right">
               <p className="text-gray-400 text-sm">
-                © 2024 Secretos Para Contar. Todos los derechos reservados.
+                © 2025 Secretos Para Contar. Todos los derechos reservados.
               </p>
               <p className="text-gray-500 text-xs mt-1">
                 Biblioteca digital educativa sin fines de lucro
